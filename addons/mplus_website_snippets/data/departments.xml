@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="department_engineering" model="hr.department">
+        <field name="name">Engineering</field>
+    </record>
+
+    <record id="department_product_design" model="hr.department">
+        <field name="name">Product Design</field>
+    </record>
+
+    <record id="department_quality_assurance" model="hr.department">
+        <field name="name">Quality Assurance</field>
+    </record>
+
+    <record id="department_operations" model="hr.department">
+        <field name="name">Operations</field>
+    </record>
+
+    <record id="department_business_analysis" model="hr.department">
+        <field name="name">Business Analysis</field>
+    </record>
+</odoo>

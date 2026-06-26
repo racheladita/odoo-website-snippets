@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="job_backend_developer" model="hr.job">
+        <field name="name">Backend Developer</field>
+        <field name="department_id" ref="department_engineering"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Join our engineering team as a backend developer and help build reliable and scalable server-side applications.
+            The responsibilities include developing and maintaining server-side logic, building APIs, optimizing application performance, and integrating front-end components with backend services.
+        </field>
+    </record>
+
+    <record id="job_frontend_developer" model="hr.job">
+        <field name="name">Frontend Developer</field>
+        <field name="department_id" ref="department_engineering"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Help create modern and responsive user experiences as a frontend developer on our team.
+            The responsibilities include developing responsive user interfaces, implementing design requirements, optimizing application performance, and collaborating with backend developers to deliver seamless user experiences.
+        </field>
+    </record>
+
+    <record id="job_odoo_developer" model="hr.job">
+        <field name="name">Odoo Developer</field>
+        <field name="department_id" ref="department_engineering"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Become part of our ERP team and contribute to developing and customizing Odoo solutions for our clients.
+            The responsibilities include developing and maintaining Odoo modules, customizing business workflows, integrating third-party services, and ensuring optimal system performance.
+        </field>
+    </record>
+
+    <record id="job_mobile_developer" model="hr.job">
+        <field name="name">Mobile Developer</field>
+        <field name="department_id" ref="department_engineering"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Join us in building high-quality mobile applications that deliver excellent user experiences.
+            The responsibilities include developing mobile applications, maintaining application performance, implementing new features, and ensuring compatibility across multiple devices and platforms.
+        </field>
+    </record>
+
+    <record id="job_ui_ux_designer" model="hr.job">
+        <field name="name">UI/UX Designer</field>
+        <field name="department_id" ref="department_product_design"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Help shape intuitive and engaging digital experiences through thoughtful design and user-centered solutions.
+            The responsibilities include designing user interfaces, conducting user research, creating wireframes and prototypes, and improving the overall user experience of our products.
+        </field>
+    </record>
+
+    <record id="job_qa_engineer" model="hr.job">
+        <field name="name">QA Engineer</field>
+        <field name="department_id" ref="department_quality_assurance"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Play a key role in maintaining software quality and ensuring reliable application performance.
+            The responsibilities include designing and executing test cases, identifying and reporting bugs, ensuring software quality, and collaborating with developers to improve application reliability.
+        </field>
+    </record>
+
+    <record id="job_devops_engineer" model="hr.job">
+        <field name="name">DevOps Engineer</field>
+        <field name="department_id" ref="department_operations"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Help improve our infrastructure and deployment processes to build scalable and reliable systems.
+            The responsibilities include managing deployment pipelines, maintaining cloud infrastructure, automating operational processes, and ensuring system reliability and scalability.
+        </field>
+    </record>
+
+    <record id="job_business_analyst" model="hr.job">
+        <field name="name">Business Analyst</field>
+        <field name="department_id" ref="department_business_analysis"/>
+        <field name="website_published">True</field>
+        <field name="description">
+            Work closely with stakeholders and development teams to turn business requirements into effective solutions.
+            The responsibilities include gathering and analyzing business requirements, identifying process improvements, collaborating with stakeholders and development teams, and ensuring that business needs are translated into effective solutions.
+        </field>
+    </record>
+</odoo>

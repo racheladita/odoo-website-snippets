@@ -1,0 +1,760 @@
+.s_bitcoin_price_chart,
+.s_random_recruitment_jobs {
+    background:
+        linear-gradient(135deg, rgba(113, 75, 103, 0.1), rgba(143, 90, 124, 0.06)),
+        linear-gradient(180deg, #fbf8fb 0%, #f4edf3 100%);
+
+    h2 {
+        margin: 0;
+        color: #152033;
+        font-size: 2.6rem;
+        font-weight: 700;
+        letter-spacing: 0;
+    }
+}
+
+.snippet-eyebrow {
+    margin: 0 0 0.35rem;
+    color: #714b67;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.bitcoin-chart-header,
+.recruitment-jobs-header {
+    margin-bottom: 1.5rem;
+}
+
+.bitcoin-chart-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.bitcoin-chart-meta {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.bitcoin-chart-symbol {
+    flex: 0 0 auto;
+    min-width: 6rem;
+    border: 1px solid #d9c8d4;
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+    background: #fff;
+    color: #4d3346;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.bitcoin-chart-range-controls {
+    display: inline-flex;
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #d9c8d4;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.bitcoin-chart-range {
+    border: 0;
+    padding: 0.35rem 0.7rem;
+    background: transparent;
+    color: #4d3346;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background-color 160ms ease, color 160ms ease;
+
+    &:hover,
+    &:focus {
+        background: #f4edf3;
+        color: #714b67;
+    }
+
+    &.is-active {
+        background: #714b67;
+        color: #fff;
+    }
+}
+
+.bitcoin-chart-panel {
+    position: relative;
+    border: 1px solid #d9c8d4;
+    border-radius: 8px;
+    padding: 1.35rem;
+    background: #fff;
+    box-shadow: 0 20px 44px rgba(30, 48, 78, 0.1);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+    &:hover {
+        border-color: #c7aec0;
+        box-shadow: 0 24px 52px rgba(30, 48, 78, 0.14);
+        transform: translateY(-2px);
+    }
+}
+
+.bitcoin-chart-status,
+.recruitment-jobs-status {
+    border-radius: 8px;
+    padding: 1rem;
+    background: #f4edf3;
+    color: #714b67;
+    font-weight: 600;
+}
+
+.bitcoin-chart-status.is-error,
+.recruitment-jobs-status.is-error {
+    background: #fff1f0;
+    color: #9b2720;
+}
+
+.bitcoin-chart-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.bitcoin-chart-latest {
+    display: block;
+    color: #152033;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.bitcoin-chart-subtitle {
+    display: block;
+    margin-top: 0.2rem;
+    color: #6b7a90;
+    font-size: 0.9rem;
+}
+
+.bitcoin-chart-change {
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-weight: 700;
+
+    &.is-positive {
+        background: #e8f7ef;
+        color: #1d7a45;
+    }
+
+    &.is-negative {
+        background: #fff1f0;
+        color: #a2332d;
+    }
+}
+
+.bitcoin-chart-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.bitcoin-chart-skeleton {
+    display: grid;
+    gap: 1rem;
+}
+
+.bitcoin-chart-stat {
+    border: 1px solid #e3d4df;
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    background: #fcf9fc;
+
+    span,
+    strong {
+        display: block;
+    }
+
+    span {
+        color: #6b7a90;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    strong {
+        margin-top: 0.2rem;
+        color: #152033;
+        font-size: 1.05rem;
+    }
+}
+
+.skeleton-line,
+.skeleton-stat,
+.skeleton-chart,
+.recruitment-job-card.is-loading {
+    position: relative;
+    overflow: hidden;
+    background: #eef4f8;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.65),
+            rgba(255, 255, 255, 0)
+        );
+        animation: snippet-skeleton 1.25s ease-in-out infinite;
+    }
+}
+
+.skeleton-line {
+    width: 70%;
+    max-width: 280px;
+    height: 2rem;
+    border-radius: 999px;
+}
+
+.skeleton-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+.skeleton-stat {
+    height: 4rem;
+    border-radius: 8px;
+}
+
+.skeleton-chart {
+    height: 260px;
+    border-radius: 8px;
+}
+
+.bitcoin-chart-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(15rem, 1fr);
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.bitcoin-chart-plot {
+    position: relative;
+    min-width: 0;
+}
+
+.bitcoin-chart-canvas {
+    min-height: 280px;
+    overflow-x: auto;
+    border: 1px solid #e3d4df;
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(113, 75, 103, 0.05), rgba(113, 75, 103, 0)),
+        #fff;
+}
+
+.bitcoin-chart-svg {
+    width: 100%;
+    min-width: 620px;
+    height: auto;
+    animation: chart-fade-in 320ms ease-out;
+}
+
+.bitcoin-chart-grid {
+    stroke: #dbe4ef;
+    stroke-width: 1;
+}
+
+.bitcoin-chart-axis {
+    fill: #6b7a90;
+    font-size: 12px;
+}
+
+.bitcoin-chart-axis-title {
+    fill: #8a98aa;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.bitcoin-chart-candle {
+    animation: chart-fade-in 260ms ease-out;
+
+    line {
+        stroke-width: 2;
+    }
+
+    rect {
+        stroke-width: 1;
+    }
+
+    &.is-positive {
+        line,
+        rect {
+            fill: #1f9d5a;
+            stroke: #1f9d5a;
+        }
+    }
+
+    &.is-negative {
+        line,
+        rect {
+            fill: #d84a42;
+            stroke: #d84a42;
+        }
+    }
+}
+
+.bitcoin-chart-hit-area {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.bitcoin-chart-tooltip {
+    position: absolute;
+    z-index: 2;
+    min-width: 8.5rem;
+    border: 1px solid #d9c8d4;
+    border-radius: 8px;
+    padding: 0.55rem 0.7rem;
+    background: #fff;
+    box-shadow: 0 16px 34px rgba(21, 32, 51, 0.18);
+    color: #152033;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -120%);
+    transition: opacity 140ms ease, transform 140ms ease;
+
+    &.is-visible {
+        opacity: 1;
+        transform: translate(-50%, -130%);
+    }
+
+    span,
+    strong {
+        display: block;
+    }
+
+    span {
+        color: #6b7a90;
+        font-size: 0.78rem;
+        font-weight: 700;
+    }
+
+    strong {
+        color: #152033;
+        font-size: 1rem;
+    }
+
+    small {
+        display: block;
+        margin-top: 0.1rem;
+        color: #8a98aa;
+        font-size: 0.72rem;
+        font-weight: 700;
+    }
+}
+
+.bitcoin-chart-side {
+    display: grid;
+    align-self: stretch;
+    gap: 1rem;
+}
+
+.bitcoin-chart-converter {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    height: 100%;
+    border: 1px solid #e3d4df;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fcf9fc;
+}
+
+.bitcoin-converter-header {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    p {
+        margin: 0;
+        color: #5a284d;
+        font-size: 1.3rem;
+        font-weight: 900;
+    }
+
+}
+
+.bitcoin-converter-fields {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+}
+
+.bitcoin-converter-field {
+    display: block;
+    margin: 0;
+
+    > span {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: #714b67;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    div {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: center;
+        gap: 0.75rem;
+        border: 1px solid #d9c8d4;
+        border-radius: 8px;
+        padding: 0.65rem;
+        background: #fff;
+    }
+
+    strong {
+        display: inline-grid;
+        place-items: center;
+        min-width: 3rem;
+        border-radius: 999px;
+        padding: 0.45rem 0.55rem;
+        background: #f4edf3;
+        color: #714b67;
+        font-size: 0.78rem;
+        font-weight: 900;
+    }
+
+    input {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: #152033;
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-align: end;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+}
+
+.bitcoin-converter-swap {
+    justify-self: center;
+    display: inline-grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid #d9c8d4;
+    border-radius: 999px;
+    background: #fff;
+    color: #714b67;
+    font-size: 1.1rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.converter-note {
+    align-self: end;
+    margin: 0;
+    color: #667085;
+    font-size: 0.75rem;
+    line-height: 1.7;
+}
+
+.recruitment-jobs-grid,
+.recruitment-jobs-skeleton {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.recruitment-jobs-filters {
+    display: grid;
+    gap: 0.35rem;
+    width: 18rem;
+    max-width: 100%;
+    margin-bottom: 1.25rem;
+
+    label {
+        color: #714b67;
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+}
+
+.recruitment-jobs-filter {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    border: 1px solid #d9c8d4;
+    border-radius: 6px;
+    padding: 0.55rem 2rem 0.55rem 0.75rem;
+    background: #fff;
+    color: #714b67;
+    font-size: 0.85rem;
+    font-weight: 800;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+
+    &:hover,
+    &:focus {
+        border-color: #714b67;
+        background: #f4edf3;
+        box-shadow: 0 0 0 0.15rem rgba(113, 75, 103, 0.12);
+        outline: 0;
+    }
+}
+
+.recruitment-job-card {
+    position: relative;
+    display: flex;
+    min-height: 260px;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e3d4df;
+    border-top: 5px solid #875b7c;
+    border-radius: 25px;
+    padding: 1.2rem;
+    background: #fff;
+    box-shadow: 0 14px 32px rgba(30, 48, 78, 0.07);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+    &:hover {
+        border-color: #b7cadb;
+        border-top-color: #714b67;
+        box-shadow: 0 22px 42px rgba(30, 48, 78, 0.14);
+        transform: translateY(-4px);
+    }
+
+    h3 {
+        margin: 0 0 0.75rem;
+        color: #152033;
+        font-size: 1.15rem;
+        font-weight: 750;
+        letter-spacing: 0;
+    }
+
+    p {
+        color: #53657d;
+    }
+}
+
+.recruitment-job-card.is-loading {
+    min-height: 260px;
+    border-color: #dbe4ef;
+    border-top-color: #dbe4ef;
+    box-shadow: none;
+    transform: none;
+}
+
+.recruitment-job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.8rem;
+
+    span {
+        border-radius: 999px;
+        padding: 0.28rem 0.58rem;
+        background: #f4edf3;
+        color: #714b67;
+        font-size: 0.78rem;
+        font-weight: 750;
+    }
+}
+
+.recruitment-job-link {
+    align-self: flex-start;
+    border-radius: 6px;
+    padding: 0.55rem 0.8rem;
+    background: #714b67;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 160ms ease, transform 160ms ease;
+
+    &:hover {
+        background: #4d3346;
+        color: #fff;
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .bitcoin-chart-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .bitcoin-chart-converter {
+        height: auto;
+    }
+
+    .bitcoin-converter-fields {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: end;
+    }
+
+    .bitcoin-converter-swap {
+        margin-bottom: 0.6rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .bitcoin-chart-header {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .bitcoin-chart-meta {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .bitcoin-chart-range-controls {
+        flex: 1 1 auto;
+    }
+
+    .bitcoin-chart-range {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .recruitment-jobs-grid,
+    .recruitment-jobs-skeleton {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767.98px) {
+    .s_bitcoin_price_chart,
+    .s_random_recruitment_jobs {
+        h2 {
+            font-size: 1.75rem;
+        }
+    }
+
+    .bitcoin-chart-meta {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .bitcoin-chart-range-controls {
+        width: 100%;
+        justify-self: end;
+    }
+
+    .bitcoin-chart-symbol {
+        align-self: stretch;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 0.65rem;
+        padding-left: 0.65rem;
+        font-size: 0.78rem;
+    }
+
+    .bitcoin-chart-range {
+        flex: 1 1 0;
+        min-width: 0;
+        padding-right: 0.42rem;
+        padding-left: 0.42rem;
+        font-size: 0.78rem;
+    }
+
+    .bitcoin-chart-panel {
+        padding: 1rem;
+    }
+
+    .s_random_recruitment_jobs .container {
+        padding-right: 1.25rem;
+        padding-left: 1.25rem;
+    }
+
+    .bitcoin-chart-stats,
+    .skeleton-stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bitcoin-converter-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .bitcoin-converter-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .bitcoin-converter-swap {
+        margin-bottom: 0;
+    }
+
+    .bitcoin-converter-field div {
+        grid-template-columns: 1fr;
+    }
+
+    .bitcoin-converter-field input {
+        text-align: center;
+    }
+
+    .bitcoin-chart-svg {
+        min-width: 520px;
+    }
+
+    .recruitment-jobs-grid,
+    .recruitment-jobs-skeleton {
+        grid-template-columns: 1fr;
+    }
+
+    .recruitment-jobs-filters,
+    .recruitment-jobs-filter {
+        width: 100%;
+    }
+}
+
+@keyframes snippet-skeleton {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes chart-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

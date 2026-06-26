@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="s_bitcoin_price_chart" name="Bitcoin Price Chart">
+        <section class="s_bitcoin_price_chart py-5" data-snippet="s_bitcoin_price_chart" data-name="Bitcoin Chart">
+            <div class="container">
+                <div class="bitcoin-chart-header">
+                    <div>
+                        <p class="snippet-eyebrow">Dynamic Content</p>
+                        <h2>Bitcoin-USD Price History</h2>
+                    </div>
+                    <div class="bitcoin-chart-meta">
+                        <span class="bitcoin-chart-symbol">BTC-USD</span>
+                        <div class="bitcoin-chart-range-controls" aria-label="Bitcoin chart range">
+                            <button class="bitcoin-chart-range is-active" type="button" data-days="1" aria-pressed="true">1D</button>
+                            <button class="bitcoin-chart-range" type="button" data-days="7" aria-pressed="false">7D</button>
+                            <button class="bitcoin-chart-range" type="button" data-days="30" aria-pressed="false">1M</button>
+                            <button class="bitcoin-chart-range" type="button" data-days="180" aria-pressed="false">6M</button>
+                            <button class="bitcoin-chart-range" type="button" data-days="365" aria-pressed="false">1Y</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="bitcoin-chart-panel">
+                    <div class="bitcoin-chart-status">Loading Bitcoin price data...</div>
+                    <div class="bitcoin-chart-skeleton" aria-hidden="true">
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-stat-grid">
+                            <div class="skeleton-stat"></div>
+                            <div class="skeleton-stat"></div>
+                            <div class="skeleton-stat"></div>
+                        </div>
+                        <div class="skeleton-chart"></div>
+                    </div>
+                    <div class="bitcoin-chart-summary d-none">
+                        <div>
+                            <span class="bitcoin-chart-latest"></span>
+                            <span class="bitcoin-chart-subtitle">1 day close price movement</span>
+                        </div>
+                        <span class="bitcoin-chart-change"></span>
+                    </div>
+                    <div class="bitcoin-chart-stats d-none" aria-label="Bitcoin price summary">
+                        <div class="bitcoin-chart-stat">
+                            <span>High</span>
+                            <strong class="bitcoin-chart-high"></strong>
+                        </div>
+                        <div class="bitcoin-chart-stat">
+                            <span>Average</span>
+                            <strong class="bitcoin-chart-average"></strong>
+                        </div>
+                        <div class="bitcoin-chart-stat">
+                            <span>Low</span>
+                            <strong class="bitcoin-chart-low"></strong>
+                        </div>
+                    </div>
+                    <div class="bitcoin-chart-workspace">
+                        <div class="bitcoin-chart-plot">
+                            <div class="bitcoin-chart-canvas" aria-live="polite"></div>
+                            <div class="bitcoin-chart-tooltip" aria-hidden="true"></div>
+                        </div>
+                        <div class="bitcoin-chart-side d-none">
+                            <div class="bitcoin-chart-converter">
+                                <div class="bitcoin-converter-header">
+                                    <p>Converter</p>
+                                </div>
+                                <div class="bitcoin-converter-fields">
+                                    <label class="bitcoin-converter-field">
+                                        <span>Bitcoin</span>
+                                        <div>
+                                            <strong>BTC</strong>
+                                            <input class="bitcoin-converter-btc" type="text" inputmode="decimal" value="1"/>
+                                        </div>
+                                    </label>
+                                    <span class="bitcoin-converter-swap" aria-label="Converts both directions">&#8645;</span>
+                                    <label class="bitcoin-converter-field">
+                                        <span>US Dollar</span>
+                                        <div>
+                                            <strong>USD</strong>
+                                            <input class="bitcoin-converter-usd" type="text" inputmode="decimal"/>
+                                        </div>
+                                    </label>
+                                </div>
+                                <p class="converter-note"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_random_recruitment_jobs" name="Random Recruitment Jobs">
+        <section class="s_random_recruitment_jobs py-5" data-snippet="s_random_recruitment_jobs" data-name="Random Jobs">
+            <div class="container">
+                <div class="recruitment-jobs-header">
+                    <p class="snippet-eyebrow">Open Roles</p>
+                    <h2>Explore Current Opportunities</h2>
+                </div>
+                <div class="recruitment-jobs-filters" aria-label="Filter jobs by department"></div>
+                <div class="recruitment-jobs-status">Loading open jobs...</div>
+                <div class="recruitment-jobs-skeleton" aria-hidden="true">
+                    <div class="recruitment-job-card is-loading"></div>
+                    <div class="recruitment-job-card is-loading"></div>
+                    <div class="recruitment-job-card is-loading"></div>
+                    <div class="recruitment-job-card is-loading"></div>
+                </div>
+                <div class="recruitment-jobs-grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </template>
+
+    <template id="website_market_snippets" inherit_id="website.snippets" name="Website Market Snippets">
+        <xpath expr="//snippets[@id='snippet_groups']/t[@id='installed_snippets_hook']" position="before">
+            <t snippet-group="dynamic_content"
+               t-snippet="website.s_snippet_group"
+               string="Dynamic Content"
+               t-thumbnail="/website/static/src/img/snippets_thumbs/s_chart.svg"/>
+            <t snippet-group="structure"
+               t-snippet="website.s_snippet_group"
+               string="Structure"
+               t-thumbnail="/website/static/src/img/snippets_thumbs/s_card.svg"/>
+        </xpath>
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="mplus_website_snippets.s_bitcoin_price_chart"
+               string="Bitcoin Chart"
+               group="dynamic_content"
+               t-thumbnail="/website/static/src/img/snippets_thumbs/s_chart.svg"/>
+            <t t-snippet="mplus_website_snippets.s_random_recruitment_jobs"
+               string="Random Jobs"
+               group="structure"
+               t-thumbnail="/website/static/src/img/snippets_thumbs/s_card.svg"/>
+        </xpath>
+    </template>
+</odoo>

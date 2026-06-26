@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <template id="market_insights_careers_page" name="Market Insights and Careers">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure">
+                <t t-call="mplus_website_snippets.s_bitcoin_price_chart"/>
+                <t t-call="mplus_website_snippets.s_random_recruitment_jobs"/>
+            </div>
+        </t>
+    </template>
+
+    <record id="market_insights_careers_page_record" model="website.page">
+        <field name="url">/market-insights-careers</field>
+        <field name="view_id" ref="mplus_website_snippets.market_insights_careers_page"/>
+        <field name="is_published">True</field>
+        <field name="website_indexed">False</field>
+    </record>
+
+    <record id="market_insights_careers_menu" model="website.menu">
+        <field name="name">Market &amp; Careers</field>
+        <field name="url">/market-insights-careers</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence">20</field>
+    </record>
+</odoo>
